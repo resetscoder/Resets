@@ -1,14 +1,14 @@
-24/02/2014 :
+  24/02/2014 :
 Finalisation du synopsis du projet
 Mise en place de hébergement resets.free.fr
 Création du Github pour le partage collaboratif
 
-17/03/2014 :
+  17/03/2014 :
 Étude de codes sources de jeux similaires ( jeux de plateformes )
 Choix de coder à l'aide de classes.
 Commencement du codage des modules main, player, level, gravity
 
-31/03/2014 :
+  31/03/2014 :
 Étude des Tilesmap ( module niveau → création de niveau à partir d'une simple image colorée ( un pixel de couleur = un sprite à charger sur le niveau ) 
 répartition des taches pour création des differents modules séparés ( en fichiers .py)
 - Alexis : main, player, level
