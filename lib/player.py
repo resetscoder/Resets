@@ -11,7 +11,7 @@ class Player():
         self.image = pygame.image.load(image).convert_alpha()
         self.rect = self.image.get_rect()
 
-    def gravite(self):
+    def gravite_newton(self):
         """Actualise la position du personnage
         lors d'un saut en fonction de la gravité"""
         g = 9.81
