@@ -1,6 +1,10 @@
 import pygame
 from pygame.locals import *
 
+#####################################
+#--Fonctions de création de sprite--#
+#####################################
+
 class Plateformes(pygame.sprite.Sprite):
     """Création d'un sprite plateforme"""
 
@@ -17,7 +21,7 @@ class Plateformes(pygame.sprite.Sprite):
         self.platform_list.add(self)
 
 class Ennemis(pygame.sprite.Sprite):
-    """Création d'un sprite plateforme"""
+    """Création d'un sprite ennemie"""
 
     def __init__(self, image):
         """Construction"""
