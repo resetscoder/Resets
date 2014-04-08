@@ -1,4 +1,4 @@
-import sys #import des fonctions système
+﻿import sys #import des fonctions système
 import os #import des fonctions os
 
 import pygame #import de la biblioteque SDL: pygame
@@ -24,14 +24,14 @@ def game():
     #son_menu.set_volume(.2)
     #son_niveau_1 = pygame.mixer.Sound('level_1.wav')
     #son_niveau_1.set_volume(.2)
-
-    fenetre = pygame.display.set_mode((1280, 1024), FULLSCREEN, 32) #affiche la fenetre en plein écran
+    info_ecran = pygame.display.info()
+    fenetre = pygame.display.set_mode((info_ecran.current_w, info_ecran.current_y), FULLSCREEN, 32) #affiche la fenetre en plein écran
 
 def events():
     """teste les évenements à l'aide
      de la fonction event.get de pygame'"""
     for event in pygame.event.get():                                #parcours la liste des evenements
-        if event.type == QUIT:                                      #si bouton quitter : 
+        if event.type == QUIT:                                      #si bouton quitter :
             pygame.quit()                                           #sortir du jeu et du script
             sys.exit()
         if event.type == KEYDOWN:                                   #si une touche est enfoncée:
@@ -40,7 +40,7 @@ def events():
                 sys.exit()
             #if event.key == K_SPACE:
                 #if player.falling == False:
-                    #player.d_vitesse_y = 0.3 
+                    #player.d_vitesse_y = 0.3
 
 
 #####################
