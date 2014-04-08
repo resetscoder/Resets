@@ -25,7 +25,9 @@ def game():
     #son_niveau_1 = pygame.mixer.Sound('level_1.wav')
     #son_niveau_1.set_volume(.2)
     info_ecran = pygame.display.info()
-    fenetre = pygame.display.set_mode((info_ecran.current_w, info_ecran.current_y), FULLSCREEN, 32) #affiche la fenetre en plein écran
+    info_ecran.current_w = LARGEUR
+    info_ecran.current_h = HAUTEUR
+    fenetre = pygame.display.set_mode((LARGEUR, HAUTEUR), FULLSCREEN, 32) #affiche la fenetre en plein écran
 
 def events():
     """teste les évenements à l'aide
