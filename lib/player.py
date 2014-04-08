@@ -28,8 +28,8 @@ class Player():
         position_relative_x = (int)(v_x*t);
         position_relative_y = (int)((v_y*t)-((g*t*t)/2000))
 
-        self.image.rect.x = self.image.rect.x + position_relative_x
-        self.image.rect.y = self.image.rect.y - position_relative_y
+        self.rect.x = self.rect.x + position_relative_x
+        self.rect.y = self.rect.y - position_relative_y
 
         t += 10
 
