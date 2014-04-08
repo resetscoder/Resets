@@ -6,7 +6,7 @@ Création du Github pour le partage collaboratif
   - 17/03/2014 :
 Étude de codes sources de jeux similaires ( jeux de plateformes )
 Choix de coder à l'aide de classes.
-Commencement du codage des modules main, player, level, gravity
+Commencement du codage des modules main, player, level.
 
   - 31/03/2014 :
 Étude des Tilesmap ( module niveau → création de niveau à partir d'une simple image colorée ( un pixel de couleur = un sprite à charger sur le niveau ) 
@@ -15,6 +15,10 @@ répartition des taches pour création des differents modules séparés ( en fic
 - Alexandre : Plateform, sound, stats,
 
   - 7/04/2014 :
-Construction de la boucle d'évenement principale dans le main.py
-Alexandre travaille sur les graphisme (creation de barre windows 95 - logo internet - firefox .. etc ..)
+Construction de la boucle d'évenements principale dans le main.py
+Alexandre travaille sur les graphismes (creation de barre windows 95 - logo internet - firefox .. etc ..)
 Début codage de player.py
+a faire : moteurs de gravité !! 
+  - 1 simpliste avec tatonnement -ajout de vitesse verticale- ;
+  - un moteur a l'aide de paraboles - ax²+bx+c=0 - ; 
+  - un moteur utilisant le principe fondamentale de la dynamique (deuxieme loi de Newton)
