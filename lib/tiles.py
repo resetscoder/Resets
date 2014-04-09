@@ -8,8 +8,8 @@ from pygame.locals import *
 affiliation_tile = {
 
 #niveau 1 - code binaire
-(,,,): None #arriere plan
-(,,,): 'image1_0'
+(0,0,0,0): None #arriere plan
+(51,204,51,0): 'image1_0'
 
 #niveau 2 - MS-DOS
 }

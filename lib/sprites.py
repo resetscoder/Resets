@@ -2,11 +2,11 @@ import pygame
 from pygame.locals import *
 
 #####################################
-#--Fonctions de création de sprite--#
+#--Fonctions de crÃ©ation de sprite--#
 #####################################
 
 class Bloc(pygame.sprite.Sprite):
-    """Création d'un sprite plateforme"""
+    """CrÃ©ation d'un sprite plateforme"""
 
     def __init__(self, image):
         """Construction"""
@@ -15,6 +15,10 @@ class Bloc(pygame.sprite.Sprite):
         self.image = pygame.image.load(image).convert_alpha()
         self.rect = self.image.get_rect()
 
-    def dessiner(self):
+    def dessiner(self,x,y):
+
+        self.rect.x = x
+        self.rect.y = y
+
         self.bloc_liste.add(self)
         self.tous_sprites_liste.add(self)

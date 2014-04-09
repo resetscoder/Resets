@@ -46,7 +46,8 @@ class Game():
         self.tous_sprites_liste = pygame.sprite.Group()
 
         #ajout des sprites
-        self.RGBlevelmap(num_niveau)
+
+        RGBlevelmap(num_niveau)
 
         #creation du personnage
         self.player = Player()
