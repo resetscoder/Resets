@@ -14,3 +14,7 @@ class Bloc(pygame.sprite.Sprite):
 
         self.image = pygame.image.load(image).convert_alpha()
         self.rect = self.image.get_rect()
+
+    def dessiner(self):
+        self.bloc_liste.add(self)
+        self.tous_sprites_liste.add(self)
