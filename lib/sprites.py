@@ -6,7 +6,7 @@ from pygame.locals import *
 #####################################
 
 class Bloc(pygame.sprite.Sprite):
-    """CrÃ©ation d'un sprite plateforme"""
+    """Création d'un sprite plateforme"""
 
     def __init__(self, image, x, y):
         """Construction"""
