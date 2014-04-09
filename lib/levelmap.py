@@ -19,7 +19,7 @@ def RGBlevelmap(num_niveau):
             x = x*(largeur/img_niveau.get_width())
             y = y*(hauteur/img_niveau.get_heigh())
             if color == (,,,):
-                Plateform('0_level%s.png'%(num_niveau),x,y)
+                Bloc('0_level%s.png'%(num_niveau),x,y)
             if color == (,,,):
-                Plateform('1_level%s.png'%(num_niveau),x,y)
+                Bloc('1_level%s.png'%(num_niveau),x,y)
             #etc...
