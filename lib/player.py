@@ -7,10 +7,34 @@ from pygame.locals import *
 
 class Player(pygame.sprite.Sprite):
     """Création d'un sprite player"""
-    def __init__(self):
+
+    #Attributs
+
+    change_x = 0
+    change_y = 0
+
+    animation_gauche = []
+    animation_droite = []
+
+    direction = 'R'
+
+    scrolling = 0
+
+    def __init__(self,num_niveau):
         """Construction"""
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('image1_1.png').convert_alpha()
+
+        #feuille = feuille_de_sprite('image1_1anim.png')
+        #image = feuille.decouper(0, 0, 66, 90)
+        #self.animation_droite.append(image)
+
+        #image = feuille.decouper(0, 0, 66, 90)
+        #image = pygame.transform.flip(image,True,False)
+        #self.animation_gauche.append(image)
+
+        #self.image = self.animation_droite[0]
+        
         self.rect = self.image.get_rect()
 
     def saut(self):
