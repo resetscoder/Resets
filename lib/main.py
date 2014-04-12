@@ -12,6 +12,7 @@ from player import *
 #############################
 
 def game():
+    global fenetre, LARGEUR, HAUTEUR, fps
     """initialise le module pygame,
     construit la fenetre"""
 
@@ -56,7 +57,7 @@ class Game():
         self.player = Player()
         self.tous_sprites_liste.add(self.player)
 
-    def events():
+    def events(self,game):
         """teste les évenements à l'aide
         de la fonction event.get de pygame"""
         for event in pygame.event.get():                                #parcours la liste des evenements
@@ -67,12 +68,23 @@ class Game():
                 if event.key == K_ESCAPE:                               #si bouton echap :
                     pygame.quit()                                       #sortir du jeu et du script
                     sys.exit()
-                #if event.key == K_SPACE:
-                    #if player.falling == False:
-                        #player.d_vitesse_y = 0.3
+                """if event.key == K_SPACE:
+                    if player.falling == False:
+                        if vitesse_x == 0:
+                            game.player.saut()
+                        else:
+                            game.player.gravitenewton()
+                if event.key == K_q:
+                    player.aller_gauche += 6
+                if event.key == K_d:
+                    player.aller_droite += 6
+                if event.key == K_q and event.key == K_LSHIFT:
+                    player.aller_gauche += 9
+                if event.key == K_d and event.key == K_LSHIFT:
+                    player.aller_droite += 9"""
 
     def affichage(self, fenetre):
-        screen.fill(( 255, 255, 255))
+        fenetre.fill(( 0, 0, 0))
 
         self.tous_sprites_liste.draw(fenetre)
 
@@ -82,12 +94,12 @@ class Game():
 #####################
 #---Boucle de jeu---#
 #####################
-    
+
 num_niveau = '1'
 game()
-game = Game()
+jeu = Game()
 while 1:
-    events()
-    Game.affichage(fenetre)
+    jeu.events(game)
+    jeu.affichage(fenetre)
     fps.tick(60)
 

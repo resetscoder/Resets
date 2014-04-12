@@ -13,6 +13,9 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.image.load('image1_1.png').convert_alpha()
         self.rect = self.image.get_rect()
 
+    def saut(self):
+        
+
     def gravite_newton(self):
         """Actualise la position du personnage
         lors d'un saut en fonction de la gravité"""
