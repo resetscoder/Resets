@@ -18,7 +18,9 @@ def game():
     pygame.init()                                                   #initialise la biblioteque
     pygame.display.set_caption("Resets - The Revolutionary Game")   #crée le titre de la fenetre
     pygame.mouse.set_visible(0)                                     #désactive le curseur souris
-    os.chdir(os.path.abspath(os.path.dirname(sys.argv[0])))         #redefini le chemin du script
+    DOSSIER_COURRANT = os.path.dirname(sys.argv[0])         #redefini le chemin du script
+    DOSSIER_PARENT = os.path.dirname(DOSSIER_COURRANT)
+    sys.path.append(os.path.join(DOSSIER_PARENT, 'data'))
     fps = pygame.time.Clock()                                       #défintion de fps (horloge du processeur)
     police = pygame.font.SysFont('Arial', 20)                       #défini la police principale
 
@@ -47,7 +49,7 @@ class Game():
 
         #ajout des sprites
 
-        RGBlevelmap(num_niveau)
+        levelmap.RGBlevelmap(num_niveau)
 
         #creation du personnage
         self.player = Player()
@@ -79,7 +81,7 @@ class Game():
 #####################
 #---Boucle de jeu---#
 #####################
-
+    
 num_niveau = '1'
 game()
 game = Game()
