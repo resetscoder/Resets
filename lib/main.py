@@ -5,7 +5,7 @@ import pygame #import de la biblioteque SDL: pygame
 from pygame.locals import * #pour faciliter la lecture import des fonctions sans le pygame.*
 
 import levelmap
-import player
+from player import *
 
 #############################
 #---Fonctions principales---#
@@ -49,11 +49,12 @@ class Game():
 
         #ajout des sprites
 
-        levelmap.RGBlevelmap(num_niveau)
+        niveau = levelmap.RGBlevelmap()
+        niveau.bloc_level(1360,766,self.bloc_liste,self.tous_sprites_liste)
 
         #creation du personnage
         self.player = Player()
-        self.tous_sprites_list.add(self.player)
+        self.tous_sprites_liste.add(self.player)
 
     def events():
         """teste les évenements à l'aide
@@ -87,6 +88,6 @@ game()
 game = Game()
 while 1:
     events()
-    game.affichage(fenetre)
+    Game.affichage(fenetre)
     fps.tick(60)
 

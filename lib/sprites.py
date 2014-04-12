@@ -17,7 +17,4 @@ class Bloc(pygame.sprite.Sprite):
 
         self.rect.x = x
         self.rect.y = y
-
-        self.bloc_liste.add(self)
-        self.tous_sprites_liste.add(self)
         

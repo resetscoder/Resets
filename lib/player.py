@@ -5,10 +5,12 @@ from pygame.locals import *
 #-----Fonction joueur principal-----#
 #####################################
 
-class Player():
+class Player(pygame.sprite.Sprite):
+    """Création d'un sprite player"""
     def __init__(self):
+        """Construction"""
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(image).convert_alpha()
+        self.image = pygame.image.load('image1_1.png').convert_alpha()
         self.rect = self.image.get_rect()
 
     def gravite_newton(self):
