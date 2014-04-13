@@ -42,7 +42,7 @@ class Game():
     tous_sprites_liste = None
     player = None
 
-    def __init__(self):
+    def __init__(self,num_niveau):
 
         #création des listes de sprites
         self.bloc_liste = pygame.sprite.Group()
@@ -54,7 +54,7 @@ class Game():
         niveau.bloc_level(1360,766,self.bloc_liste,self.tous_sprites_liste)
 
         #creation du personnage
-        self.player = Player()
+        self.player = Player(num_niveau)
         self.tous_sprites_liste.add(self.player)
 
     def events(self,game):
@@ -75,13 +75,13 @@ class Game():
                         else:
                             game.player.gravitenewton()
                 if event.key == K_q:
-                    player.aller_gauche += 6
+                    player.aller_gauche()
                 if event.key == K_d:
-                    player.aller_droite += 6
+                    player.aller_droite()
                 if event.key == K_q and event.key == K_LSHIFT:
-                    player.aller_gauche += 9
+                    player.aller_gaucheshift()
                 if event.key == K_d and event.key == K_LSHIFT:
-                    player.aller_droite += 9"""
+                    player.aller_droiteshift()"""
 
     def affichage(self, fenetre):
         fenetre.fill(( 0, 0, 0))
@@ -97,7 +97,7 @@ class Game():
 
 num_niveau = '1'
 game()
-jeu = Game()
+jeu = Game(num_niveau)
 while 1:
     jeu.events(game)
     jeu.affichage(fenetre)

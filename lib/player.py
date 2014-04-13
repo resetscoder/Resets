@@ -37,7 +37,7 @@ class Player(pygame.sprite.Sprite):
         
         self.rect = self.image.get_rect()
 
-    def saut(self):
+    #def saut(self):
         
 
     def gravite_newton(self):
@@ -61,4 +61,16 @@ class Player(pygame.sprite.Sprite):
         self.rect.y = self.rect.y - position_relative_y
 
         t += 10
+
+    def aller_droite(self):
+        self.change_x = 6
+        self.direction = "R"
+        
+    def aller_gauche(self):
+        self.change_x = -6
+        self.direction = "L"
+
+    def stop(self):
+        self.change_x = 0
+        
 
