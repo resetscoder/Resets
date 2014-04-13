@@ -20,8 +20,9 @@ class RGBlevelmap():
     equivaut à une image affiliée à la couleur"""
     
     def __init__(self):
+        global level
         """Charge l'image du niveau et le dictionnaire d'affiliation"""
-        
+        level = True
         self.affiliation_tile = affiliation_tile
         self.img_niveau = pygame.image.load(os.path.join(DOSSIER_DATA,('Level_%s.png'%('1'))))
 

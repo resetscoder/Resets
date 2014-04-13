@@ -39,9 +39,10 @@ def initialisation():
 #####################
 
 num_niveau = '1'
+level = False
 initialisation()
-game.Game(num_niveau)
-jeu = game.Game(num_niveau)
+game.Game(num_niveau,level)
+jeu = game.Game(num_niveau,level)
 while 1:
     jeu.events()
     jeu.affichage(fenetre)
