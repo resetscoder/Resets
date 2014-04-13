@@ -11,10 +11,11 @@ from player import *
 
 class Game():
 
-     # Listes des sprites
+    # Listes des sprites
     bloc_liste = None
     tous_sprites_liste = None
     player = None
+
 
     def __init__(self,num_niveau,level):
 
@@ -26,10 +27,10 @@ class Game():
 
         if level == False:
             niveau = levelmap.RGBlevelmap()
-            niveau.bloc_level(1360,766,self.bloc_liste,self.tous_sprites_liste)
+            niveau.bloc_level(self.bloc_liste,self.tous_sprites_liste)
 
         #creation du personnage
-        self.player = Player(num_niveau)
+        self.player = Player(num_niveau,self.bloc_liste,self.tous_sprites_liste)
         self.tous_sprites_liste.add(self.player)
 
     def events(self):

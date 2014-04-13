@@ -12,11 +12,10 @@ import game
 #############################
 
 def initialisation():
-    global fenetre, LARGEUR, HAUTEUR, fps
+    global fenetre, fps
     """initialise le module pygame,
     construit la fenetre"""
 
-    pygame.init()                                                   #initialise la biblioteque
     pygame.display.set_caption("Resets - The Revolutionary Game")   #crée le titre de la fenetre
     pygame.mouse.set_visible(0)                                     #désactive le curseur souris
     
@@ -28,9 +27,7 @@ def initialisation():
     #son_menu.set_volume(.2)
     #son_niveau_1 = pygame.mixer.Sound('level_1.wav')
     #son_niveau_1.set_volume(.2)
-    info_ecran = pygame.display.Info()
-    LARGEUR = info_ecran.current_w
-    HAUTEUR = info_ecran.current_h
+
     fenetre = pygame.display.set_mode((LARGEUR, HAUTEUR), FULLSCREEN, 32) #affiche la fenetre en plein écran
 
 

@@ -5,7 +5,6 @@ from constantes import *
 from feuilledesprite import *
 from math import cos
 from math import sin
-import game
 
 import pygame
 from pygame.locals import *
@@ -19,19 +18,24 @@ class Player(pygame.sprite.Sprite):
 
     #Attributs
 
+    #vitesse du joueur (de combien il doit se deplacer en un tour de boucle)
     derive_x = 0
     derive_y = 0
 
+    #liste donctenant les differentes positions de l'image du player
     animation_gauche = []
     animation_droite = []
 
-    direction = 'R'
+    #direction dans laquelle va le joueur
+    direction = 'droite'
 
+    #nombre de pixel dont le niveau s'est déplacé
     scrolling = 0
 
     falling = False
+    newton = False
 
-    def __init__(self,num_niveau):
+    def __init__(self,num_niveau,bloc_liste,tous_sprites_liste):
         """Construction"""
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(os.path.join(DOSSIER_DATA,'image1_1.png')).convert_alpha()
@@ -47,6 +51,9 @@ class Player(pygame.sprite.Sprite):
         #self.image = self.animation_droite[0]
         
         self.rect = self.image.get_rect()
+
+        self.bloc = bloc_liste
+        self.tous = tous_sprites_liste
 
 
     def gravite_newton(self):
@@ -77,35 +84,36 @@ class Player(pygame.sprite.Sprite):
             
     def gravite(self):
         """effet de la force d'attraction gravitationnelle"""
-        if self.derive_y == 0:
-            self.derive_y = 1
-        else:
-            self.derive_y += .35
+        if self.newton == False:
+            if self.derive_y == 0:
+                self.derive_y = 1
+            else:
+                self.derive_y += .35
 
-        #verifier si on a atteint un obstacle
-        collision = pygame.sprite.collide_rect(self, game.tous_sprites_liste)
-        if collision == True:
-            self.falling = False
+            #verifier si on a atteint un obstacle
+            collision_liste = pygame.sprite.spritecollide(self, self.tous, False)
+            for bloc in collision_liste:
+                self.falling = False
 
     def aller_droite(self):
         self.derive_x = 6
-        self.direction = "R"
+        self.direction = "droite"
         
     def aller_gauche(self):
         self.derive_x = -6
-        self.direction = "L"
+        self.direction = "gauche"
 
     def stop(self):
         self.derive_x = 0
         
-    def update_player(self):
+    def update(self):
         """deplace le joueur"""
 
         self.gravite()
 
         self.rect.x += self.derive_x
 
-        collision_liste = pygame.sprite.spritecollide(self, self.tous_sprites_liste, False)
+        collision_liste = pygame.sprite.spritecollide(self, self.tous, False)
         for bloc in collision_liste:
             # Si on se déplace vers la droite, 
             if self.derive_x > 0:
@@ -113,9 +121,9 @@ class Player(pygame.sprite.Sprite):
             elif self.derive_x < 0:
                 self.rect.left = bloc.rect.right
 
-        self.rect.y += self.change_y
+        self.rect.y += self.derive_y
 
-        collision_liste = pygame.sprite.spritecollide(self, self.tous_sprites_liste, False)
+        collision_liste = pygame.sprite.spritecollide(self, self.tous, False)
         for bloc in collision_liste:
             # Si on se déplace vers la droite, 
             if self.derive_y > 0:
@@ -127,3 +135,8 @@ class Player(pygame.sprite.Sprite):
                 self.rect.top = bloc.rect.bottom
 
             self.derive_y = 0
+            self.falling = False
+
+        if self.rect.y == HAUTEUR-((self.rect.height)/2):
+            self.derive_y = 0
+            self.falling = False

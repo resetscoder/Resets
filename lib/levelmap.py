@@ -26,7 +26,7 @@ class RGBlevelmap():
         self.affiliation_tile = affiliation_tile
         self.img_niveau = pygame.image.load(os.path.join(DOSSIER_DATA,('Level_%s.png'%('1'))))
 
-    def bloc_level(self,LARGEUR,HAUTEUR,bloc_liste,tous_sprites_liste):
+    def bloc_level(self,bloc_liste,tous_sprites_liste):
         """Parcours le tile et charge les sprites"""
 
         #del bloc_liste[:], tous_sprites_liste[:]
@@ -38,8 +38,8 @@ class RGBlevelmap():
         for x in range(width):
             for y in range(height):                        #parcours du tile pixel par pixel
                 color = self.img_niveau.get_at((x,y))										#recuperation de la couleur
-                X = x*(1300/width)
-                Y = y*(560/height)
+                X = x*(LARGEUR/width)
+                Y = y*(HAUTEUR/height)
                 
                 if not color == (0,0,0,255):
                     tile = self.affiliation_tile[str(color)]
