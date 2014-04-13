@@ -5,14 +5,13 @@ import pygame #import de la biblioteque SDL: pygame
 from pygame.locals import * #pour faciliter la lecture import des fonctions sans le pygame.*
 
 from constantes import *
-import levelmap
-from player import *
+import game
 
 #############################
 #---Fonctions principales---#
 #############################
 
-def game():
+def initialisation():
     global fenetre, LARGEUR, HAUTEUR, fps
     """initialise le module pygame,
     construit la fenetre"""
@@ -34,71 +33,17 @@ def game():
     HAUTEUR = info_ecran.current_h
     fenetre = pygame.display.set_mode((LARGEUR, HAUTEUR), FULLSCREEN, 32) #affiche la fenetre en plein écran
 
-class Game():
-
-     # Listes des sprites
-    bloc_liste = None
-    tous_sprites_liste = None
-    player = None
-
-    def __init__(self,num_niveau):
-
-        #création des listes de sprites
-        self.bloc_liste = pygame.sprite.Group()
-        self.tous_sprites_liste = pygame.sprite.Group()
-
-        #ajout des sprites
-
-        niveau = levelmap.RGBlevelmap()
-        niveau.bloc_level(1360,766,self.bloc_liste,self.tous_sprites_liste)
-
-        #creation du personnage
-        self.player = Player(num_niveau)
-        self.tous_sprites_liste.add(self.player)
-
-    def events(self,game):
-        """teste les évenements à l'aide
-        de la fonction event.get de pygame"""
-        for event in pygame.event.get():                                #parcours la liste des evenements
-            if event.type == QUIT:                                      #si bouton quitter :
-                pygame.quit()                                           #sortir du jeu et du script
-                sys.exit()
-            if event.type == KEYDOWN:                                   #si une touche est enfoncée:
-                if event.key == K_ESCAPE:                               #si bouton echap :
-                    pygame.quit()                                       #sortir du jeu et du script
-                    sys.exit()
-                """if event.key == K_SPACE:
-                    if player.falling == False:
-                        if vitesse_x == 0:
-                            game.player.saut()
-                        else:
-                            game.player.gravitenewton()
-                if event.key == K_q:
-                    player.aller_gauche()
-                if event.key == K_d:
-                    player.aller_droite()
-                if event.key == K_q and event.key == K_LSHIFT:
-                    player.aller_gaucheshift()
-                if event.key == K_d and event.key == K_LSHIFT:
-                    player.aller_droiteshift()"""
-
-    def affichage(self, fenetre):
-        fenetre.fill(( 0, 0, 0))
-
-        self.tous_sprites_liste.draw(fenetre)
-
-        pygame.display.flip()
-
 
 #####################
 #---Boucle de jeu---#
 #####################
 
 num_niveau = '1'
-game()
-jeu = Game(num_niveau)
+initialisation()
+game.Game(num_niveau)
+jeu = game.Game(num_niveau)
 while 1:
-    jeu.events(game)
+    jeu.events()
     jeu.affichage(fenetre)
     fps.tick(60)
 
