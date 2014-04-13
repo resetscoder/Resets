@@ -1,8 +1,13 @@
+import os
+import sys
+
 import pygame
 from pygame.locals import *
 
+from constantes import *
 import sprites
 import tiles
+
 
 #######################################
 #---Fonctions de creation de niveau---#
@@ -18,7 +23,7 @@ class RGBlevelmap():
     def __init__(self):
         
         self.affiliation_tile = {'(51, 204, 51, 255)': '0','(1,1,1,1)': '1'}
-        self.img_niveau = pygame.image.load('Level_%s.png'%('1'))
+        self.img_niveau = pygame.image.load(os.path.join(DOSSIER_DATA,('Level_%s.png'%('1'))))
 
     def bloc_level(self,LARGEUR,HAUTEUR,bloc_liste,tous_sprites_liste):
         width = self.img_niveau.get_width()
@@ -31,7 +36,7 @@ class RGBlevelmap():
                 if not color == (0,0,0,255):
                     tile = self.affiliation_tile[str(color)]
                     image = 'image1_' + tile + '.png'
-                    bloc = sprites.Bloc(image,X,Y)
+                    bloc = sprites.Bloc(os.path.join(DOSSIER_DATA,image),X,Y)
                     bloc_liste.add(bloc)
                     tous_sprites_liste.add(bloc)
                 #etc...

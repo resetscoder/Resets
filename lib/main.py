@@ -4,6 +4,7 @@ import os #import des fonctions os
 import pygame #import de la biblioteque SDL: pygame
 from pygame.locals import * #pour faciliter la lecture import des fonctions sans le pygame.*
 
+from constantes import *
 import levelmap
 from player import *
 
@@ -19,9 +20,7 @@ def game():
     pygame.init()                                                   #initialise la biblioteque
     pygame.display.set_caption("Resets - The Revolutionary Game")   #crée le titre de la fenetre
     pygame.mouse.set_visible(0)                                     #désactive le curseur souris
-    DOSSIER_COURRANT = os.path.dirname(sys.argv[0])         #redefini le chemin du script
-    DOSSIER_PARENT = os.path.dirname(DOSSIER_COURRANT)
-    sys.path.append(os.path.join(DOSSIER_PARENT, 'data'))
+    
     fps = pygame.time.Clock()                                       #défintion de fps (horloge du processeur)
     police = pygame.font.SysFont('Arial', 20)                       #défini la police principale
 
