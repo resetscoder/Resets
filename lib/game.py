@@ -31,6 +31,8 @@ class Game():
 
         #creation du personnage
         self.player = Player(num_niveau,self.bloc_liste,self.tous_sprites_liste)
+        self.player.rect.x = 95
+        self.player.rect.y = HAUTEUR - self.player.rect.height
         self.tous_sprites_liste.add(self.player)
 
     def events(self):
@@ -45,8 +47,7 @@ class Game():
                     pygame.quit()                                       #sortir du jeu et du script
                     sys.exit()
                 if event.key == K_SPACE:
-                    if self.player.falling == False:
-                        self.player.gravite_newton()
+                    self.player.saut()
                 if event.key == K_q:
                     self.player.aller_gauche()
                 if event.key == K_d:

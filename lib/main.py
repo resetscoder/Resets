@@ -19,7 +19,7 @@ def initialisation():
     pygame.display.set_caption("Resets - The Revolutionary Game")   #crée le titre de la fenetre
     pygame.mouse.set_visible(0)                                     #désactive le curseur souris
     
-    fps = pygame.time.Clock()                                       #défintion de fps (horloge du processeur)
+    fps = pygame.time.Clock()                                       #définition de fps (horloge du processeur)
     police = pygame.font.SysFont('Arial', 20)                       #défini la police principale
 
     #a mettre dans sound.py
@@ -35,10 +35,9 @@ def initialisation():
 #---Boucle de jeu---#
 #####################
 
-num_niveau = '1'
+num_niveau = '1' #provisoire
 level = False
 initialisation()
-game.Game(num_niveau,level)
 jeu = game.Game(num_niveau,level)
 while 1:
     jeu.events()
