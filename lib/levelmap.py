@@ -6,7 +6,7 @@ from pygame.locals import *
 
 from constantes import *
 import sprites
-import tiles
+from tiles import *
 
 
 #######################################
@@ -15,17 +15,19 @@ import tiles
 
 
 class RGBlevelmap():
-
-    #penser à l'arrière plan !
-    #del bloc_liste[:], tous_sprites_liste[:]
-    #effacer les anciens sprites
+    """dessine un niveau a partir d'un tile
+    c'est a dire une image dont 1 pixel de couleur
+    equivaut à une image affiliée à la couleur"""
     
     def __init__(self):
+        """Charge l'image du niveau et le dictionnaire d'affiliation"""
         
-        self.affiliation_tile = {'(51, 204, 51, 255)': '0','(1,1,1,1)': '1'}
+        self.affiliation_tile = affiliation_tile
         self.img_niveau = pygame.image.load(os.path.join(DOSSIER_DATA,('Level_%s.png'%('1'))))
 
     def bloc_level(self,LARGEUR,HAUTEUR,bloc_liste,tous_sprites_liste):
+        """Parcours le tile et charge les sprites"""
+        
         width = self.img_niveau.get_width()
         height = self.img_niveau.get_height()
         for x in range(width):
@@ -36,7 +38,7 @@ class RGBlevelmap():
                 if not color == (0,0,0,255):
                     tile = self.affiliation_tile[str(color)]
                     image = 'image1_' + tile + '.png'
-                    bloc = sprites.Bloc(os.path.join(DOSSIER_DATA,image),X,Y)
+                    bloc = sprites.Bloc(os.path.join(DOSSIER_DATA,image),X,Y,width,height)
                     bloc_liste.add(bloc)
                     tous_sprites_liste.add(bloc)
                 #etc...
