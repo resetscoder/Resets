@@ -36,7 +36,7 @@ class Player(pygame.sprite.Sprite):
 
     newton = False
 
-    t = 0
+    t = 1
 
     def __init__(self,num_niveau,bloc_liste,tous_sprites_liste):
         """Construction"""
@@ -58,34 +58,27 @@ class Player(pygame.sprite.Sprite):
         self.bloc = bloc_liste
         self.tous = tous_sprites_liste
 
-
-    def gravite_newton(self):
+    def loi_newton(self):
         """Actualise la position du personnage
-        lors d'un saut en fonction de la gravité
-        ENCORE NON FONCTIONNELLE"""
-
+        lors d'un saut en fonction de la gravité"""
+        
         #constantes physiques
         g = 9.81
         pi = 3.14
 
         #constantes d'intégration
         v_init = self.derive_x
-        if self.derive_x ==0:
+        if self.derive_x == 0:
             angle_init = 0
         else:
-            angle_init = pi/3
+            angle_init = pi/3 #A VOIR : gestion de l'angle fonction de v_init
 
         v_x = cos(angle_init)*v_init
-        v_y = sin(angle_init)*v_init
+        v_y = abs(sin(angle_init)*v_init)
 
         #Integration 
-        self.position_relative_x = (int)(v_x*self.t);
-        self.position_relative_y = (int)((v_y*self.t)-((g*self.t*self.t)/2000))
-
-        #Affectation de la position
-        #self.rect.x = self.rect.x + position_relative_x
-        #self.rect.y = self.rect.y - position_relative_y
-        
+        self.position_relative_x = int(v_x*self.t);
+        self.position_relative_y = -int(v_y*self.t-(g*self.t*self.t/2000))*2        
 
         #avancement du temps
         self.t += 10
@@ -103,7 +96,7 @@ class Player(pygame.sprite.Sprite):
             if self.rect.y >= HAUTEUR - self.rect.height and self.derive_y >= 0:
                 self.derive_y = 0
                 self.rect.y = HAUTEUR - self.rect.height
-                self.t = 0
+                self.t = 1
                 
     def aller_droite(self):
         self.derive_x = 6
@@ -124,7 +117,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += self.derive_x
         self.rect.x += self.position_relative_x
 
-        collision_liste = pygame.sprite.spritecollide(self, self.tous, False)
+        collision_liste = pygame.sprite.spritecollide(self, self.bloc, False)
         for bloc in collision_liste:
             # Si on se déplace vers la droite, 
             if self.derive_x > 0:
@@ -135,7 +128,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += self.derive_y
         self.rect.y += self.position_relative_y
 
-        collision_liste = pygame.sprite.spritecollide(self, self.tous, False)
+        collision_liste = pygame.sprite.spritecollide(self, self.bloc, False)
         for bloc in collision_liste:
             # Si on se déplace vers la droite, 
 
@@ -145,4 +138,5 @@ class Player(pygame.sprite.Sprite):
                 self.rect.top = bloc.rect.bottom
 
             self.derive_y = 0
-            self.t = 0
+            self.t = 1
+            self.newton = False

@@ -30,7 +30,6 @@ def initialisation():
 
     fenetre = pygame.display.set_mode((LARGEUR, HAUTEUR), FULLSCREEN, 32) #affiche la fenetre en plein écran
 
-
 #####################
 #---Boucle de jeu---#
 #####################

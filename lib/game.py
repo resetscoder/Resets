@@ -15,8 +15,7 @@ class Game():
     bloc_liste = None
     tous_sprites_liste = None
     player = None
-
-
+    
     def __init__(self,num_niveau,level):
 
         #création des listes de sprites
@@ -39,23 +38,31 @@ class Game():
         """teste les évenements à l'aide
         de la fonction event.get de pygame"""
         for event in pygame.event.get():                                #parcours la liste des evenements
+
             if event.type == QUIT:                                      #si bouton quitter :
                 pygame.quit()                                           #sortir du jeu et du script
                 sys.exit()
+
             if event.type == KEYDOWN:                                   #si une touche est enfoncée:
                 if event.key == K_ESCAPE:                               #si bouton echap :
                     pygame.quit()                                       #sortir du jeu et du script
                     sys.exit()
                 if event.key == K_SPACE:
-                    self.player.saut()
-                if event.key == K_q:
+                    self.player.loi_newton()
+                if event.key == K_a:
                     self.player.aller_gauche()
                 if event.key == K_d:
                     self.player.aller_droite()
-                if event.key == K_q and event.key == K_LSHIFT:
+                if event.key == K_a and event.key == K_LSHIFT:
                     self.player.aller_gauche()
                 if event.key == K_d and event.key == K_LSHIFT:
                     self.player.aller_droite()
+
+            if event.type == KEYUP:
+                if event.key == K_a:
+                    self.player.stop()
+                if event.key == K_d:
+                    self.player.stop()
 
     def affichage(self, fenetre):
         self.player.update()
