@@ -61,11 +61,10 @@ class Player(pygame.sprite.Sprite):
     def loi_newton(self):
         """Actualise la position du personnage
         lors d'un saut en fonction de la gravité"""
-        
         #constantes physiques
         g = 9.81
         pi = 3.14
-
+        
         #constantes d'intégration
         v_init = self.derive_x
         if self.derive_x == 0:
@@ -78,11 +77,19 @@ class Player(pygame.sprite.Sprite):
 
         #Integration 
         self.position_relative_x = int(v_x*self.t);
-        self.position_relative_y = -int(v_y*self.t-(g*self.t*self.t/2000))*2        
+        self.position_relative_y = -int(v_y*self.t-(g*self.t*self.t/2000))*2
 
         #avancement du temps
         self.t += 10
 
+    def saut(self):
+
+        self.rect.y += 2
+        collision_liste = pygame.sprite.spritecollide(self, self.bloc, False)
+        self.rect.y -= 2
+
+        if len(collision_liste) > 0 or self.rect.bottom >= HAUTEUR:
+            self.derive_y = -10
             
     def gravite(self):
         """effet de la force d'attraction gravitationnelle"""
@@ -93,9 +100,9 @@ class Player(pygame.sprite.Sprite):
                 self.derive_y += .35
 
 
-            if self.rect.y >= HAUTEUR - self.rect.height and self.derive_y >= 0:
+            if self.rect.bottom >= HAUTEUR and self.derive_y >= 0:
                 self.derive_y = 0
-                self.rect.y = HAUTEUR - self.rect.height
+                self.rect.bottom = HAUTEUR
                 self.t = 1
                 
     def aller_droite(self):

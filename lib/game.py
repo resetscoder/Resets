@@ -48,7 +48,7 @@ class Game():
                     pygame.quit()                                       #sortir du jeu et du script
                     sys.exit()
                 if event.key == K_SPACE:
-                    self.player.loi_newton()
+                    self.player.saut()
                 if event.key == K_a:
                     self.player.aller_gauche()
                 if event.key == K_d:
