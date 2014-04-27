@@ -1,4 +1,4 @@
-  - 24/02/2014 :
+﻿  - 24/02/2014 :
 Finalisation du synopsis du projet
 Mise en place de hébergement resets.free.fr
 Création du Github pour le partage collaboratif
@@ -41,3 +41,6 @@ Alexandre :
  Choix d'une dimension type de texture (34*34)
  Menu fonctionnel !
  1er niveau fonctionnel !
+
+  - 27/04/2014 :
+ Réflexions sur l'utilisation future de cx_freeze et inno setup pour garantir une portabilité du  programme optimale ( compilation en .exe plus installateur) 
