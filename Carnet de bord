@@ -22,3 +22,22 @@ a faire : moteurs de gravité !!
   - 1 simpliste avec tatonnement -ajout de vitesse verticale- ;
   - un moteur a l'aide de paraboles - ax²+bx+c=0 - ; 
   - un moteur utilisant le principe fondamentale de la dynamique (deuxieme loi de Newton)
+  
+  - 14/04/2014 :
+Alexis - Debeugages multiples:
+    - problemes avec la fonction loi_newton
+    - abandon des moteurs de gravité a l'aide de paraboles pour les sauts ( inadapté pour les jeux de plateformes )
+    - commencement de l'animation du personnage avec la fonction feuille de sprite qui decoupe une image en plusieurs autres
+Alexandre :
+    - Commencement du menu
+    - Graphismes des niveaux "binaire" et "Ms-Dos"
+  
+  - 21/04/2014 :
+ Debeugages des collisions, et des dimensions des textures 
+ --> reflexion sur une fonction redimmensionnement en fonction de la resolution de l'ecran
+ Continuation du codage du menu
+ 
+  - 26/04/2014 :
+ Choix d'une dimension type de texture (34*34)
+ Menu fonctionnel !
+ 1er niveau fonctionnel !
