@@ -90,7 +90,6 @@ class Player(pygame.sprite.Sprite):
 
         if len(collision_liste) > 0 or self.rect.bottom >= HAUTEUR:
             self.derive_y = -10
-            print("saut")
             
     def gravite(self):
         """effet de la force d'attraction gravitationnelle"""
@@ -124,7 +123,6 @@ class Player(pygame.sprite.Sprite):
 
         self.rect.x += self.derive_x
         self.rect.x += self.position_relative_x
-        print("derive_x",self.derive_x)
 
         collision_liste = pygame.sprite.spritecollide(self, self.bloc, False)
         for bloc in collision_liste:
@@ -136,7 +134,6 @@ class Player(pygame.sprite.Sprite):
 
         self.rect.y += self.derive_y
         self.rect.y += self.position_relative_y
-        print("derive_y",self.derive_y)
 
         collision_liste = pygame.sprite.spritecollide(self, self.bloc, False)
         for bloc in collision_liste:
