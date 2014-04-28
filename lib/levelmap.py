@@ -7,6 +7,7 @@ from pygame.locals import *
 from constantes import *
 import sprites
 from tiles import *
+import Menu
 
 
 #######################################
@@ -17,8 +18,8 @@ from tiles import *
 class RGBlevelmap():
     """dessine un niveau a partir d'un tile
     c'est a dire une image dont 1 pixel de couleur
-    equivaut à une image affiliée à la couleur"""
-    
+    equivaut Ã  une image affiliÃ©e Ã  la couleur"""
+
     def __init__(self):
         global level
         """Charge l'image du niveau et le dictionnaire d'affiliation"""
@@ -34,13 +35,13 @@ class RGBlevelmap():
 
         width = self.img_niveau.get_width()
         height = self.img_niveau.get_height()
-        
+
         for x in range(width):
             for y in range(height):                        #parcours du tile pixel par pixel
-                color = self.img_niveau.get_at((x,y))										#recuperation de la couleur
+                color = self.img_niveau.get_at((x,y))                                       #recuperation de la couleur
                 X = x*(LARGEUR/width)
                 Y = y*(HAUTEUR/height)
-                
+
                 if not color == (0,0,0,255):
                     tile = self.affiliation_tile[str(color)]
 
@@ -49,6 +50,5 @@ class RGBlevelmap():
 
                     bloc_liste.add(bloc)
                     tous_sprites_liste.add(bloc)
-                    
+
                 #etc...
-        
