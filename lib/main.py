@@ -33,9 +33,10 @@ def initialisation():
 #---Boucle de jeu---#
 #####################
 def resets():
+    num_niveau = '1' #provisoire
     level = False
     initialisation()
-    jeu = game.Game('1',level)
+    jeu = game.Game(num_niveau,level)
     while 1:
         jeu.events()
         jeu.affichage(fenetre)

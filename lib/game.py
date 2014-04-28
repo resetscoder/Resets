@@ -29,7 +29,7 @@ class Game():
             niveau.bloc_level(self.bloc_liste,self.tous_sprites_liste)
 
         #creation du personnage
-        self.player = Player(str(num_niveau),self.bloc_liste,self.tous_sprites_liste)
+        self.player = Player(num_niveau,self.bloc_liste,self.tous_sprites_liste)
         self.player.rect.x = 95
         self.player.rect.y = HAUTEUR - self.player.rect.height
         self.tous_sprites_liste.add(self.player)
