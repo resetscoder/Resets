@@ -18,9 +18,16 @@ class Menu():
         #creation d'une police:
         self.police = pygame.font.Font(os.path.join(DOSSIER_DATA,"Dosis-Medium.ttf"), 60)
 
+        #Chargement et affichage de la fenêtre et de l'icône
+        self.accueil = pygame.image.load(os.path.join(DOSSIER_DATA,"accueil.png")).convert()
+
+        self.logo = pygame.image.load(os.path.join(DOSSIER_DATA,"logo.png")).convert_alpha()
+
         #numero de la ligne du menu selectionnée
         self.menuligne = 1
-        
+
+        self.time = 1
+        self.transition = False
         
     def texte(self,texte,couleur):
         """crée un texte avec une couleur définie"""
@@ -61,23 +68,21 @@ class Menu():
                     pygame.quit()                                       #sortir du jeu et du script
                     sys.exit()
                 if event.key == K_RETURN and self.menuligne == 1:
-                    resets()
+                    self.transition = True
             #déplacement dans le menu
                 if event.key == K_DOWN:
                     self.menuligne += 1 
                 if event.key == K_UP:
                     self.menuligne -= 1
-                
+
 
     def bouclemenu(self):
         
-        #Chargement et affichage de la fenêtre et de l'icône
-        accueil = pygame.image.load(os.path.join(DOSSIER_DATA,"accueil.png")).convert()
-        #ajouter la fonction redimmension ici <-- 
-        self.fenetre.blit(accueil,(0,0))
-        logo = pygame.image.load(os.path.join(DOSSIER_DATA,"logo.png")).convert_alpha()
-        self.fenetre.blit(logo,(self.fenetre.get_rect().centerx - (logo.get_rect().width)/2,50))
         
+        #ajouter la fonction redimmension ici <-- 
+        self.fenetre.blit(self.accueil,(0,0))
+
+        self.fenetre.blit(self.logo,(self.fenetre.get_rect().centerx - (self.logo.get_rect().width)/2,50))
 
         self.evenementsmenu()
         if self.menuligne == 4 or self.menuligne <= 0:
@@ -94,13 +99,29 @@ class Menu():
         elif self.menuligne == 3:
             self.quitterpartie(ROUGE)
 
+        if self.transition == True:
+            self.fenetre.blit(self.accueil,(0,0))
+            self.logo = pygame.transform.smoothscale(self.logo, (int(511*self.time),int(142*self.time)))
+            self.fenetre.blit(self.logo,(self.fenetre.get_rect().centerx - (self.logo.get_rect().width)/2,50))
+            self.time += .1
+            if self.time > 4:
+                self.time = 1
+                self.transition = False
+                self.logo = pygame.image.load(os.path.join(DOSSIER_DATA,"logo.png")).convert_alpha()
+                resets()
+                
+
         #Rafraichissement
         pygame.time.Clock().tick(60)
-        pygame.display.flip()             
+        pygame.display.flip()
+
+def main():
+    menu = Menu()
+    while 1:
+        menu.bouclemenu()
         
-menu = Menu()
-while 1:
-    menu.bouclemenu()
+if __name__ == '__main__':
+    main()
 
 
 

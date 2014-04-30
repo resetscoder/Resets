@@ -60,7 +60,8 @@ class Player(pygame.sprite.Sprite):
 
     def loi_newton(self):
         """Actualise la position du personnage
-        lors d'un saut en fonction de la gravité"""
+        lors d'un saut en fonction de la gravité
+        non fonctionelle pour l'instant"""
         #constantes physiques
         g = 9.81
         pi = 3.14
@@ -97,7 +98,7 @@ class Player(pygame.sprite.Sprite):
             if self.derive_y == 0:
                 self.derive_y = 1
             else:
-                self.derive_y += .35
+                self.derive_y += 0.35
 
 
             if self.rect.bottom >= HAUTEUR and self.derive_y >= 0:

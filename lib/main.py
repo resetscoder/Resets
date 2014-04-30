@@ -41,4 +41,7 @@ def resets():
         jeu.events()
         jeu.affichage(fenetre)
         fps.tick(60)
+        if jeu.retourmenu == True:
+            return
+            
 

@@ -7,6 +7,7 @@ from pygame.locals import * #pour faciliter la lecture import des fonctions sans
 from constantes import *
 import levelmap
 from player import *
+import Menu
 
 
 class Game():
@@ -15,6 +16,7 @@ class Game():
     bloc_liste = None
     tous_sprites_liste = None
     player = None
+    retourmenu = False
     
     def __init__(self,num_niveau,level):
 
@@ -43,10 +45,9 @@ class Game():
                 pygame.quit()                                           #sortir du jeu et du script
                 sys.exit()
 
-            if event.type == KEYDOWN:                                   #si une touche est enfoncée:
+            if event.type == KEYDOWN:                                   #si une touche est enfoncée:                                                                           #si une touche est enfoncée:
                 if event.key == K_ESCAPE:                               #si bouton echap :
-                    pygame.quit()                                       #sortir du jeu et du script
-                    sys.exit()
+                    self.retourmenu = True
                 if event.key == K_SPACE:
                     self.player.saut()
                 if event.key == K_a:
