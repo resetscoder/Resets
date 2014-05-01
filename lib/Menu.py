@@ -17,7 +17,7 @@ class Menu():
         pygame.mouse.set_visible(0)
 
         #creation d'une police:
-        self.police = pygame.font.Font(os.path.join(DOSSIER_DATA,"Dosis-Medium.ttf"), 60)
+        self.police = pygame.font.Font(os.path.join(DOSSIER_DATA,"Dosis-Regular.ttf"), 60)
 
         #Chargement et affichage de la fenêtre et de l'icône
         self.accueil = pygame.image.load(os.path.join(DOSSIER_DATA,"accueil.png")).convert()

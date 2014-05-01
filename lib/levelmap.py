@@ -37,9 +37,11 @@ class RGBlevelmap():
         
         for x in range(width):
             for y in range(height):                        #parcours du tile pixel par pixel
-                color = self.img_niveau.get_at((x,y))										#recuperation de la couleur
-                X = x*(LARGEUR/width)
-                Y = y*(HAUTEUR/height)
+                color = self.img_niveau.get_at((x,y))       #recuperation de la couleur
+
+                facteur = HAUTEUR/height
+                X = x*facteur
+                Y = y*facteur
                 
                 if not color == (0,0,0,255):
                     tile = self.affiliation_tile[str(color)]
@@ -49,6 +51,4 @@ class RGBlevelmap():
 
                     bloc_liste.add(bloc)
                     tous_sprites_liste.add(bloc)
-                    
-                #etc...
         
