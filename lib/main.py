@@ -1,4 +1,11 @@
-﻿import sys #import des fonctions système
+﻿#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+#############
+#--Imports--#
+#############
+
+import sys #import des fonctions système
 import os #import des fonctions os
 
 import pygame #import de la biblioteque SDL: pygame

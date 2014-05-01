@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+#############
+#--Imports--#
+#############
+
 import pygame
 from pygame.locals import *
 from constantes import *

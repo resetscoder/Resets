@@ -1,6 +1,19 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+#############
+#--Imports--#
+#############
+
 import pygame
 
+
+#############
+#--Classes--#
+#############
+
 #inspiré par http://programarcadegames.com/python_examples/sprite_sheets/
+
 class FeuilledeSprite():
     """ Permet de recuperer une image en particulier,
     dans une feuille de sprite de plusieures images"""

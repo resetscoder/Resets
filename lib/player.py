@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+#############
+#--Imports--#
+#############
+
 import os
 import sys
 

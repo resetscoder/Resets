@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+#############
+#--Imports--#
+#############
+
 import sys #import des fonctions système
 import os #import des fonctions os
 
@@ -9,6 +16,10 @@ import levelmap
 from player import *
 import Menu
 
+
+#############
+#--Classes--#
+#############
 
 class Game():
 
