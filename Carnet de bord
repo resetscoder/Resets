@@ -33,14 +33,28 @@ Alexandre :
     - Graphismes des niveaux "binaire" et "Ms-Dos"
   
   - 21/04/2014 :
- Debeugages des collisions, et des dimensions des textures 
- --> reflexion sur une fonction redimmensionnement en fonction de la resolution de l'ecran
- Continuation du codage du menu
+Debeugages des collisions, et des dimensions des textures 
+--> reflexion sur une fonction redimmensionnement en fonction de la resolution de l'ecran
+Continuation du codage du menu
  
   - 26/04/2014 :
- Choix d'une dimension type de texture (34*34)
- Menu fonctionnel !
- 1er niveau fonctionnel !
+Choix d'une dimension type de texture (34*34)
+Menu fonctionnel !
+1er niveau fonctionnel !
 
   - 27/04/2014 :
- Réflexions sur l'utilisation future de cx_freeze et inno setup pour garantir une portabilité du  programme optimale ( compilation en .exe plus installateur) 
+Réflexions sur l'utilisation future de cx_freeze et inno setup pour garantir une portabilité du  programme optimale ( compilation en .exe plus installateur) 
+
+  - 29/04/2014 :
+Travaux sur le Menu :
+    - Retour au menu depuis le niveau fonctionnel !
+    - Transition avec agrandissement du logo Resets pour le lancement d'une nouvelle partie ! 
+    - Relflexions sur l'utilisation d'un fichier texte pour la gestion des sauvegardes et ds statistiques !
+Alexandre :
+    - Ajout de textures 34*34 pour le niveau 2 et 3
+    - Mise en place de la fonction Redimension pou s'adapter aux differentes resolutions d'écrans !
+    
+  - 01/05/2014 :
+Gestion du scrolling fonctionnelle :
+    - A voir: la mise en place d'une limite de sroll ( dépendant de chaque niveaux ) 
+    
