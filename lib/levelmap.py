@@ -24,13 +24,11 @@ class RGBlevelmap():
         """Charge l'image du niveau et le dictionnaire d'affiliation"""
         level = True
         self.affiliation_tile = affiliation_tile
+        self.ennemies = ennemies
         self.img_niveau = pygame.image.load(os.path.join(DOSSIER_DATA,('Level_%s.png'%('1'))))
 
-    def bloc_level(self,bloc_liste,tous_sprites_liste):
+    def bloc_level(self,bloc_liste,ennemies_liste,tous_sprites_liste):
         """Parcours le tile et charge les sprites"""
-
-        #del bloc_liste[:], tous_sprites_liste[:]
-        #effacer les anciens sprites
 
         width = self.img_niveau.get_width()
         height = self.img_niveau.get_height()
@@ -48,7 +46,9 @@ class RGBlevelmap():
 
                     image = 'image1_' + tile + '.png'
                     bloc = sprites.Bloc(os.path.join(DOSSIER_DATA,image),X,Y,width,height)
-
-                    bloc_liste.add(bloc)
+                    if color in self.ennemies:
+                        ennemies_liste.add(bloc)
+                    else:
+                        bloc_liste.add(bloc)
                     tous_sprites_liste.add(bloc)
         

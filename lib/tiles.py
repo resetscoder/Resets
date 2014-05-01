@@ -12,4 +12,8 @@ affiliation_tile = {
 
 #niveau 2: MS-DOS
 
+#niveau 3: Windows 95
+
 }
+
+ennemies = [(10,10,10,255)]

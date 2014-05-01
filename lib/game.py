@@ -14,21 +14,22 @@ class Game():
 
     # Listes des sprites
     bloc_liste = None
+    ennemies_liste = None
     tous_sprites_liste = None
     player = None
     retourmenu = False
     
-    def __init__(self,num_niveau,level):
+    def __init__(self,num_niveau):
 
         #création des listes de sprites
         self.bloc_liste = pygame.sprite.Group()
         self.tous_sprites_liste = pygame.sprite.Group()
+        self.ennemies_liste = pygame.sprite.Group()
 
         #ajout des sprites
 
-        if level == False:
-            niveau = levelmap.RGBlevelmap()
-            niveau.bloc_level(self.bloc_liste,self.tous_sprites_liste)
+        niveau = levelmap.RGBlevelmap()
+        niveau.bloc_level(self.bloc_liste,self.ennemies_liste,self.tous_sprites_liste)
 
         #creation du personnage
         self.player = Player(num_niveau,self.bloc_liste,self.tous_sprites_liste)
