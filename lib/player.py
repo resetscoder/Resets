@@ -92,15 +92,15 @@ class Player(pygame.sprite.Sprite):
         self.rect.y -= 2
 
         if len(collision_liste) > 0 or self.rect.bottom >= HAUTEUR:
-            self.derive_y = -10
+            self.derive_y = -10/5
             
     def gravite(self):
         """effet de la force d'attraction gravitationnelle"""
         if self.newton == False:
             if self.derive_y == 0:
-                self.derive_y = 1
+                self.derive_y = 1/20
             else:
-                self.derive_y += 0.35
+                self.derive_y += 0.35/20
 
 
             if self.rect.bottom >= HAUTEUR and self.derive_y >= 0:
@@ -109,11 +109,11 @@ class Player(pygame.sprite.Sprite):
                 self.t = 1
                 
     def aller_droite(self):
-        self.derive_x = 6
+        self.derive_x = 1
         self.direction = "droite"
         
     def aller_gauche(self):
-        self.derive_x = -6
+        self.derive_x = -1
         self.direction = "gauche"
 
     def stop(self):
