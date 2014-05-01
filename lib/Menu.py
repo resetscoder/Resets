@@ -10,6 +10,10 @@ from pygame.locals import *
 from constantes import *
 from main import *
 
+####################
+#--Classe du Menu--#
+####################
+
 class Menu():
     """Crée un menu de demarrage avec le choix des niveaux,
         les credits, peut-être des paramètres ..."""  
@@ -82,28 +86,34 @@ class Menu():
 
 
     def bouclemenu(self):
+        """Dessine les differents éléments de l'écran,
+        met a jour les differents élements """
         
-        
-        #ajouter la fonction redimmension ici <-- 
         self.fenetre.blit(self.accueil,(0,0))
 
         self.fenetre.blit(self.logo,(self.fenetre.get_rect().centerx - (self.logo.get_rect().width)/2,50))
-
+        
+        #boucle d'évenements
         self.evenementsmenu()
+        
+        #modulo de la ligne du menu
         if self.menuligne == 4 or self.menuligne <= 0:
             self.menuligne = 1
-            
+        
+        #dessiner le menu classique
         self.nouveaumenu(BLANC)
         self.chargerpartie(BLANC)
         self.quitterpartie(BLANC)
         
+        #dessiner la ligne selectionnée
         if self.menuligne == 1:
             self.nouveaumenu(ROUGE)
         elif self.menuligne == 2:
             self.chargerpartie(ROUGE)
         elif self.menuligne == 3:
             self.quitterpartie(ROUGE)
-
+        
+        #Transition de nouvelle partie
         if self.transition == True:
             self.fenetre.blit(self.accueil,(0,0))
             self.logo = pygame.transform.smoothscale(self.logo, (int(511*self.time),int(142*self.time)))
@@ -120,11 +130,19 @@ class Menu():
         pygame.time.Clock().tick(60)
         pygame.display.flip()
 
+####################
+#--Boucle du menu--#
+####################
+
 def main():
     menu = Menu()
     while 1:
         menu.bouclemenu()
         
+###############
+#--Execution--#
+###############
+
 if __name__ == '__main__':
     main()
 

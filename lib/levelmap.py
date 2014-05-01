@@ -17,13 +17,13 @@ from tiles import *
 
 
 ####################################
-#---Classe de c""eation de niveau---#
+#---Classe de création de niveau---#
 ####################################
 
 
 class RGBlevelmap():
-    """dessine un niveau a partir d'un tile
-    c'est a dire une image dont 1 pixel de couleur
+    """dessine un niveau à partir d'un tile
+    c'est à dire une image dont un pixel de couleur
     equivaut à une image affiliée à la couleur"""
     
     def __init__(self):
@@ -38,9 +38,12 @@ class RGBlevelmap():
         width = self.img_niveau.get_width()
         height = self.img_niveau.get_height()
         
+        #parcours du tile pixel par pixel
         for x in range(width):
-            for y in range(height):                        #parcours du tile pixel par pixel
-                color = self.img_niveau.get_at((x,y))       #recuperation de la couleur
+            for y in range(height):
+                
+                #recuperation de la couleur
+                color = self.img_niveau.get_at((x,y))       
 
                 facteur = HAUTEUR/height
                 X = x*facteur
@@ -50,10 +53,12 @@ class RGBlevelmap():
                     tile = self.affiliation_tile[str(color)]
 
                     image = 'image1_' + tile + '.png'
-                    bloc = sprites.Bloc(os.path.join(DOSSIER_DATA,image),X,Y,width,height)
+                    bloc = sprites.Bloc(os.path.join(DOSSIER_DATA,image),X,Y)
+                    
                     if color in self.ennemies:
                         ennemies_liste.add(bloc)
                     else:
                         bloc_liste.add(bloc)
+                    
                     tous_sprites_liste.add(bloc)
         

@@ -17,9 +17,10 @@ from redimension import *
 import pygame
 from pygame.locals import *
 
-#####################################
-#-----Fonction joueur principal-----#
-#####################################
+
+###################################
+#-----Classe joueur principal-----#
+###################################
 
 class Player(pygame.sprite.Sprite):
     """Création d'un sprite player"""
@@ -93,7 +94,9 @@ class Player(pygame.sprite.Sprite):
         self.t += 10
 
     def saut(self):
-
+        """Augmente la position verticale du joueur"""
+        
+        #Verifie si le joueur est bien sur le sol ou une plateforme
         self.rect.y += 2
         collision_liste = pygame.sprite.spritecollide(self, self.bloc, False)
         self.rect.y -= 2
@@ -103,17 +106,16 @@ class Player(pygame.sprite.Sprite):
             
     def gravite(self):
         """effet de la force d'attraction gravitationnelle"""
-        if self.newton == False:
-            if self.derive_y == 0:
-                self.derive_y = 1/20
-            else:
-                self.derive_y += 0.35/20
+        
+        if self.derive_y == 0:
+            self.derive_y = 1/20
+        else:
+            self.derive_y += 0.35/20
 
 
-            if self.rect.bottom >= HAUTEUR and self.derive_y >= 0:
-                self.derive_y = 0
-                self.rect.bottom = HAUTEUR
-                self.t = 1
+        if self.rect.bottom >= HAUTEUR and self.derive_y >= 0:
+            self.derive_y = 0
+            self.rect.bottom = HAUTEUR
                 
     def aller_droite(self):
         self.derive_x = 1
@@ -153,5 +155,3 @@ class Player(pygame.sprite.Sprite):
                 self.rect.top = bloc.rect.bottom
 
             self.derive_y = 0
-            self.t = 1
-            self.newton = False
