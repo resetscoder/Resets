@@ -5,6 +5,7 @@ from constantes import *
 from feuilledesprite import *
 from math import cos
 from math import sin
+from redimension import *
 
 import pygame
 from pygame.locals import *
@@ -42,6 +43,7 @@ class Player(pygame.sprite.Sprite):
         """Construction"""
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(os.path.join(DOSSIER_DATA,'image1_1.png')).convert_alpha()
+        self.image = redimensionnement(self.image, LARGEUR, HAUTEUR)
 
         #feuille = feuille_de_sprite('image1_1anim.png')
         #image = feuille.decouper(0, 0, 66, 90)

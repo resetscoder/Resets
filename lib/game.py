@@ -65,8 +65,34 @@ class Game():
                 if event.key == K_d:
                     self.player.stop()
 
+    def scroll_niveau(self, deplacement):
+        """En developpement,
+            ajouter une limite definie pour le niveau
+            pour ne pas scroller a l'infini """
+        for sprites in self.bloc_liste:
+            sprites.rect.x += deplacement
+    
+    def scrolling(self):
+        """En developpement"""
+        # si le joueur va du coté droit:
+        lim = int(LARGEUR*(2/3))
+        if self.player.rect.x >= lim:
+            difference = self.player.rect.x - lim
+            self.player.rect.x = lim
+            self.scroll_niveau(-difference)
+    
+        # si le joueur va du coté gauche
+        lim1 = int(LARGEUR*(1/6))
+        if self.player.rect.x <= lim1:
+            difference = lim1 - self.player.rect.x
+            self.player.rect.x = lim1
+            self.scroll_niveau(difference)
+    
+
     def affichage(self, fenetre):
         self.player.update()
+
+        self.scrolling()
 
         fenetre.fill(( 0, 0, 0))
 

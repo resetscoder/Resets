@@ -13,7 +13,8 @@ class Menu():
     def __init__(self):
         #Ouvrir une fenêtre
         self.fenetre = pygame.display.set_mode((LARGEUR,HAUTEUR),FULLSCREEN, 32)
-        pygame.display.set_caption("Resets")
+        pygame.display.set_caption("Resets - The Revolutionary Game")
+        pygame.mouse.set_visible(0)
 
         #creation d'une police:
         self.police = pygame.font.Font(os.path.join(DOSSIER_DATA,"Dosis-Medium.ttf"), 60)
