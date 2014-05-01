@@ -57,4 +57,5 @@ Alexandre :
   - 01/05/2014 :
 Gestion du scrolling fonctionnelle :
     - A voir: la mise en place d'une limite de sroll ( dépendant de chaque niveaux ) 
-    
+ise en place d'un "facteur" de mise a l'echelle dans RGBlevelmap pour permettre des niveaux 
+plus larges que l'écran et éviter la compression du niveau si la resolution est inferieure à 1366 etc...
