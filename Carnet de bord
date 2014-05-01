@@ -60,3 +60,4 @@ Gestion du scrolling fonctionnelle :
 Mise en place d'un "facteur" de mise a l'echelle dans RGBlevelmap pour permettre des niveaux 
 plus larges que l'écran et éviter la compression du niveau si la resolution est inferieure à 1366 etc...7
 Augmentation de la fluidité
+Encodage UTF-8 + Ajouts de commentaires
